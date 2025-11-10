@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Animated Fitness Icons Background -->
+    <div class="fitness-icons" id="fitnessIcons">
+        <!-- Icons will be added by JavaScript -->
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-avatar">
+                <i class="fas fa-dumbbell"></i>
+            </div>
+            <div class="header-text">
+                <h2>Fitness Assistant</h2>
+                <p class="status">Online</p>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" title="Settings"><i class="fas fa-cog"></i></button>
+                <button class="action-btn" title="Workout Plans"><i class="fas fa-dumbbell"></i></button>
+                <button class="action-btn" title="Nutrition"><i class="fas fa-apple-alt"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <div class="welcome-message">
+                <div class="welcome-avatar">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <div class="welcome-text">
+                    <h3>Welcome to Fitness Assistant! <i class="fas fa-heartbeat pulse"></i></h3>
+                    <p>I'm here to help you with your fitness journey. Ask me about:</p>
+                    <div class="quick-actions">
+                        <button class="quick-action" onclick="sendQuickMessage('Workout plans')">
+                            <i class="fas fa-dumbbell"></i> Workouts
+                        </button>
+                        <button class="quick-action" onclick="sendQuickMessage('Diet plans')">
+                            <i class="fas fa-utensils"></i> Nutrition
+                        </button>
+                        <button class="quick-action" onclick="sendQuickMessage('Weight loss tips')">
+                            <i class="fas fa-weight"></i> Weight Loss
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="input-group">
+                <button class="input-action" title="Add File">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <input type="text" id="user-input" 
+                       placeholder="Ask me about workouts, diet, or fitness..." 
+                       onkeypress="handleKeyPress(event)"
+                       autocomplete="off">
+                <button id="send-button" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="suggested-questions">
+                <span>Try asking:</span>
+                <button onclick="sendQuickMessage('Best exercises for beginners?')">Beginner exercises</button>
+                <button onclick="sendQuickMessage('Healthy meal ideas')">Meal ideas</button>
+                <button onclick="sendQuickMessage('How to lose weight?')">Weight loss tips</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
